@@ -4,6 +4,7 @@ void setup()
   cent = new PVector(width/2, height/2);
   rad = width;
   textRead = new UI(0);
+  Menu = true;
 }
 
 //Variables needed
@@ -13,20 +14,25 @@ float rad;
 UI textRead;
 
 void draw()
-{
-  background(255);
-  float x = cent.x * rad * sin(radians(theta));
-  float y = cent.y * rad * cos(radians(theta));
-  redLines();
-  line(width/2, height/2, x, y);
-  textRead.read();
-  textRead.display();
+{ 
+  if(!Menu)
+  {
+    if(mode == 0)
+    {
+      mode0();
+    }
+  }
+  else
+  {
+    theMenu();
+  }
 }
 
-void keyPressed()
+void advance()
 {
   theta-= 10;
   textRead.current+= 2;
+  println(mouseX);
 }
 
 void redLines()
@@ -39,6 +45,18 @@ void redLines()
     line(cent.x, cent.y, x, y);
     stroke(0);
   }
+}
+
+
+void mode0()
+{
+    background(255);
+    float x = cent.x * rad * sin(radians(theta));
+    float y = cent.y * rad * cos(radians(theta));
+    redLines();
+    line(width/2, height/2, x, y);
+    textRead.read();
+    textRead.display();
 }
   
   

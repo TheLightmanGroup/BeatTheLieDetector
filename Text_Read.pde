@@ -20,7 +20,7 @@ class UI
   void display()
   {
     fill(0);
-    println(lines);
+   // println(lines);
     textSize(30);
     textAlign(CENTER);
     if(current < lines.length)
@@ -39,11 +39,36 @@ class UI
     fill(255);
     for(int i = 0; i < ans.length; i++)
     {
+      int s = button();
       fill(255);
+      if(s == i && (mouseY > height - height/4 && mouseY < (height - height/4) + 50))
+      {
+        fill(255, 0, 0);
+        
+        if(mousePressed)
+        {
+          advance();
+        }
+      }
+        
+      
       rect(0 + (250 * i), height - height/4, 250,50);
       fill(0);
       text(ans[i], 50 + (250*i), height - height/6);
     }
+  }
+  
+  int button()
+  {
+    int x = (int)mouseX/(width/2);
+    
+    println(x);
+    return x;
+  }
+  
+  void choose()
+  {
+    
   }
   
   
