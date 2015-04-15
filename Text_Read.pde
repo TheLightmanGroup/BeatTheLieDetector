@@ -67,8 +67,8 @@ class UI
     return x;
   }
   
-  /*
-  void checkAns()
+  
+/*  void checkAns()
   {
     if(!questionAnswered)
     {
@@ -77,13 +77,14 @@ class UI
     
     if(theta < threshold)
     {
-      gameOver();
+      gameOverSplash();
     }
-*/
+
   }
   
   
+*/  
   
   
-
+}
 

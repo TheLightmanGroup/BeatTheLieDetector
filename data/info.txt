@@ -1,0 +1,9 @@
+Your name is John.
+You are 23.
+You live in Ecuador.
+You killed your wife.
+You often argue with your wife.
+She cheated on you.
+It was revenge.
+
+HIT ENTER TO CONTINUE.

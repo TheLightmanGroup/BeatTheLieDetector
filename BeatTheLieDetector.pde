@@ -13,6 +13,7 @@ PVector cent;
 float theta = 270;
 float rad;
 boolean Move = false;
+boolean change = false;
 int count = 0;
 int threshhold = 135;
 int choice;
@@ -67,6 +68,8 @@ void redLines()
 
 void mode0()
 {
+  if(change)
+  {
     background(255);
     float x = cent.x * rad * sin(radians(theta));
     float y = cent.y * rad * cos(radians(theta));
@@ -74,12 +77,17 @@ void mode0()
     line(width/2, height/2, x, y);
     textRead.read();
     textRead.display();
+  }
+  else
+  {
+    info();
+  }
 }
 
 
 void keyPressed()
 {
-  gameOver = true;
+  change = true;
 }
 
 void move()
@@ -92,3 +100,14 @@ void move()
   }
 }
 
+void info()
+{
+  background(255);
+  String[] lines = loadStrings("info.txt");
+  for(int i =0; i < lines.length; i++)
+  {
+      String q = lines[i];
+      println(q);
+      text(q, width/5, 60 + 30 * (i));
+  }
+}
