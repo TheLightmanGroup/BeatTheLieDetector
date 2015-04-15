@@ -5,18 +5,29 @@ void setup()
   rad = width;
   textRead = new UI(0);
   Menu = true;
+  range = height/2 + height/10;
+  currentY = height/2;
+  polyDir = false;
 }
 
 
 //Variables needed
+boolean questionAnswered = false;
+ArrayList<Polygraph> polys = new ArrayList<Polygraph>();
+float lieLevelMult;
+boolean polyDir;
+float range;
+float currentY;
 PVector cent;
 float theta = 270;
 float rad;
 boolean Move = false;
 boolean change = false;
 int count = 0;
-int threshhold = 135;
+int threshold = 135;
 int choice;
+int excitement = 0;
+int lying = 0;
 UI textRead;
 
 void draw()
@@ -25,12 +36,70 @@ void draw()
   {
     if(mode == 0)
     {
+      int rand = (int)random(-2,2);
+      excitement += rand;
+      if(excitement<=0)
+      lying = 0;
+      if(excitement > 0 && excitement <=20)
+      lying = 1;
+       if(excitement > 20 && excitement <=40)
+      lying = 2;
+      
+      stroke(0,255,0);
+      text("excitement: " + excitement + "\nlying: " + lying, width/2, height/2);
       mode0();
       if(Move)
       {
         move();
         count++;
       }
+    }
+    else if(mode == 1)
+    {
+      int randrange = (int)random(-10,10);
+      background(255);
+      println(range);
+      if(currentY >= height/2 + dist(width/2,range,width/2,height/2))
+      {
+        polyDir = false;
+      }
+      else if(currentY <= height/2 - dist(width/2,range,width/2,height/2))
+      {
+        polyDir = true;
+      }
+      if(polyDir)
+      {
+        currentY+= 2;
+      }
+      else
+      {
+        currentY-= 2;
+      }
+      if(questionAnswered = true)
+      {
+        if(lying==2)
+        {
+          Move = true;
+        }
+        
+       if(theta < threshold)
+        {
+          textRead.gameOver();
+        }
+      }
+      Polygraph p = new Polygraph();
+      p.y = currentY;
+      polys.add(p);
+      for(int i = 0; i < polys.size(); i++)
+      {
+        polys.get(i).update();
+        polys.get(i).display();
+        if(polys.get(i).x > width || polys.get(i).y > height || polys.get(i).x < 0 || polys.get(i).y < 0)
+        {
+          polys.remove(i);
+        }
+      }
+      range += randrange;
     }
   }
   else
@@ -68,7 +137,7 @@ void redLines()
 
 void mode0()
 {
-  if(change)
+    if(change)
   {
     background(255);
     float x = cent.x * rad * sin(radians(theta));
@@ -85,10 +154,6 @@ void mode0()
 }
 
 
-void keyPressed()
-{
-  change = true;
-}
 
 void move()
 {
@@ -111,3 +176,9 @@ void info()
       text(q, width/5, 60 + 30 * (i));
   }
 }
+
+void keyPressed()
+{
+  change = true;
+}
+
