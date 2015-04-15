@@ -1,4 +1,5 @@
 boolean Menu;
+boolean gameOver = false;
 int mode;
 
 
@@ -43,4 +44,14 @@ void menuButtons()
   }
 }
 
+
+
+void gameOverSplash()
+{
+  background(0);
+  fill(255,0,0);
+  textSize(40);
+  text("Game Over", width/4, 60);
+  
+}
 

@@ -7,10 +7,15 @@ void setup()
   Menu = true;
 }
 
+
 //Variables needed
 PVector cent;
 float theta = 270;
 float rad;
+boolean Move = false;
+int count = 0;
+int threshhold = 135;
+int choice;
 UI textRead;
 
 void draw()
@@ -20,11 +25,23 @@ void draw()
     if(mode == 0)
     {
       mode0();
+      if(Move)
+      {
+        move();
+        count++;
+      }
     }
   }
   else
   {
-    theMenu();
+    if(gameOver)
+    {
+      gameOverSplash();
+    }
+    else
+    {
+      theMenu();
+    }
   }
 }
 
@@ -59,8 +76,19 @@ void mode0()
     textRead.display();
 }
 
+
 void keyPressed()
 {
+  gameOver = true;
 }
-  
-  
+
+void move()
+{
+  theta -= .1;
+  if(count == 50)
+  {
+    count = 0;
+    Move = false;
+  }
+}
+

@@ -20,7 +20,6 @@ class UI
   void display()
   {
     fill(0);
-   // println(lines);
     textSize(30);
     textAlign(CENTER);
     if(current < lines.length)
@@ -47,7 +46,10 @@ class UI
         
         if(mousePressed)
         {
+          choice = s;
+          println("Answer = " + s);
           advance();
+          mousePressed = false;
         }
       }
         
@@ -65,29 +67,19 @@ class UI
     return x;
   }
   
-  void choose()
-  {
-    
-  }
-  
-  
- /* 
+  /*
   void checkAns()
   {
-    if(lie)
+    if(!questionAnswered)
     {
-      theta+= 10;
-    }
-    else
-    {
-      
+      Move = true;
     }
     
-    if(theta > threshold)
+    if(theta < threshold)
     {
       gameOver();
     }
-    */
+*/
   }
   
   

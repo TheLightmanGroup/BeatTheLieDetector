@@ -1,2 +1,20 @@
-Are you a fucking retard?
+Is your name John?
+YES	NO
+Are you 18 years or over?
+YES	NO
+Do you live in Ireland?
+YES	NO
+Are you sitting down?
+YES	NO
+Were you at home when she died?
+YES	NO
+Did you touch the body?
+YES	NO
+Did you argue often?
+YES	NO
+Did you kill your wife?
+YES	NO
+Did you see her die?
+YES	NO
+Are you innocent?
 YES	NO

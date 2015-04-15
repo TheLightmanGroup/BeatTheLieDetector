@@ -1,4 +1,4 @@
-class AI
+/*class AI
 {
   boolean isPlayerLying;
   boolean gameWon;
@@ -14,36 +14,19 @@ class AI
      currentlyLying = false;
      gameWon = false;
      lyingProbability = 0;
-     currentQuestion = 0;
      noQuestions = 4;
   }
   
   void update()
-  {
-    if(lyingProbability >=100)
-    {
-      gameWon = false;
-      gameOver();
-    }
-    else if(lyingProbability <=100 && currentQuestion >= noQuestions)
-    {
-      gameWon = true;
-      gameOver();
-    }
-    
+  { 
     if(questionAnswered = false)
     {
-      display(currentQuestion);
       readin(lieDetector);
       if(currentlyLying)
       {
-        lyingProbability += 25;
-        currentQuestion++;
+        Move = true;
       }
-      else
-      {
-        currentQuestion++;
-      }
+
     }
       
   }
@@ -56,14 +39,11 @@ class AI
     }
     else
     {
-      //insert losing screen
+      gameOverSplash();
     }
   }
   
-  void display()
-  {
-    //insert question display here?
-  }
-  
 }
+
+*/
 
